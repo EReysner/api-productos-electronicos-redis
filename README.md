@@ -130,22 +130,3 @@ mvn clean test
 
 **Cobertura:** 18 tests totales (ProductServiceTest: 10 tests, ProductControllerTest: 8 tests)
 
-
-##
-
-```bash
-# Ver estado de contenedores
-docker-compose ps
-
-# Ver logs de Redis
-docker logs redis-cache
-
-# Reiniciar servicios
-docker-compose restart
-
-# Limpiar y reconstruir
-docker-compose down -v
-docker-compose up -d --build
-```
-
----
