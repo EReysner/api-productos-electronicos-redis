@@ -128,5 +128,4 @@ mvn test
 mvn clean test
 ```
 
-**Cobertura:** 18 tests totales (ProductServiceTest: 10 tests, ProductControllerTest: 8 tests)
 
