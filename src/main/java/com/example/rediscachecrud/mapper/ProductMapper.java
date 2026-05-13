@@ -7,6 +7,8 @@ import com.example.rediscachecrud.model.Product;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+//mapper para convertir entre entidades y DTOs, utilizando ModelMapper para 
+//simplificar el proceso de mapeo entre objetos.
 @Component
 public class ProductMapper {
 
