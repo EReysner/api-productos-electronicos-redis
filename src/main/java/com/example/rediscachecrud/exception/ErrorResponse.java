@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+// clase para representar la estructura del error response
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
