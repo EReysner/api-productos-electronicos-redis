@@ -25,11 +25,20 @@ public class ProductController {
 
     private final ProductService productService;
 
+    // Endpoint para obtener todos los productos sin paginación
+    // @GetMapping se utiliza para: Obtener una lista de todos los productos disponibles en el sistema.
     @GetMapping
     public ResponseEntity<List<ProductDTO>> getAllProducts() {
         return ResponseEntity.ok(productService.getAllProducts());
     }
+    /* 
+    @GetMapping
+    public ResponseEntity<List<ProductDTO>> getAllProducts() {
+        return ResponseEntity.ok(productService.getAllProducts());
+    }*/
+    
 
+    // Endpoint para obtener productos con paginación
     @GetMapping("/paginated")
     public ResponseEntity<Page<ProductDTO>> getProductsPaginated(
             @RequestParam(defaultValue = "0") int page,
@@ -38,11 +47,25 @@ public class ProductController {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
         return ResponseEntity.ok(productService.getProductsPaginated(pageable));
     }
+    /* 
+    public ResponseEntity<Page<ProductDTO>> getProductsPaginated(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
+        return ResponseEntity.ok(productService.getProductsPaginated(pageable));
+    }*/
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> getProductById(@PathVariable Long id) {
         return ResponseEntity.ok(productService.getProductById(id));
     }
+
+    /* 
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable Long id) {
+        return ResponseEntity.ok(productService.getProductById(id));
+    }*/
 
     @PostMapping
     public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductCreateDTO productCreateDTO) {

@@ -45,6 +45,7 @@ public class ProductService {
                 .map(productMapper::toDTO);
     }
 
+    // @Cacheable se utiliza para: Obtener los detalles de un producto específico por su ID, con almacenamiento en caché para mejorar el rendimiento.
     @Cacheable(value = "products", key = "#id")
     @Transactional(readOnly = true)
     public ProductDTO getProductById(Long id) {
@@ -54,6 +55,8 @@ public class ProductService {
         return productMapper.toDTO(product);
     }
 
+    // @CacheEvict se utiliza para: Eliminar el caché de todos los productos cuando se crea un nuevo producto.
+    // con el objetivo de mantener la coherencia de los datos en la caché después de una operación de escritura (creación, actualización o eliminación).
     @CacheEvict(value = "products", key = "'allProducts'")
     @Transactional
     public ProductDTO createProduct(ProductCreateDTO productCreateDTO) {
@@ -63,6 +66,7 @@ public class ProductService {
         return productMapper.toDTO(savedProduct);
     }
 
+    // @CachePut se utiliza para: Actualizar el caché de un producto específico después de modificar sus detalles.
     @CachePut(value = "products", key = "#id")
     @CacheEvict(value = "products", key = "'allProducts'")
     @Transactional

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+// modelo de producto con anotaciones de validación y mapeo a la base de datos
 @Entity
 @Table(name = "products")
 @Data
